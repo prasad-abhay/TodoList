@@ -16,39 +16,26 @@ export default function AddTodo({ addTodo }) {
   };
 
   return (
-    <div className="form">
-      <h4>Add Todo</h4>
-      <form onSubmit={submit}>
-        <div className="mb-3">
-          <label htmlFor="title" className="form-label">
-            Title
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            value={title}
+    <div >
+      <h1 className="todo-form">Todo List</h1>        
+        <div>
+           <form onSubmit= {submit}className="todo-form">
+
+           <input type="text" name="title"  value={title}
             onChange={(e) => setTitle(e.target.value)}
             id="title"
-            placeholder="Add Title"
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="desc" className="form-label">
-            Description
-          </label>
-          <input
-            type="text"
+            placeholder="Add Title" />
+
+           <input type="text"
             className="form-control"
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
             id="desc"
-            placeholder="Add Description"
-          />
+            placeholder="Add Description" />
+
+           <button type="submit" className="btn btn-primary">Add Todo</button>
+           </form>
         </div>
-        <button type="submit" className="btn btn-primary">
-          Add
-        </button>
-      </form>
     </div>
   );
 }

@@ -1,8 +1,8 @@
 export default function TodoItem({ todo,onDelete }) {
   return (
     <div className="todoitem">
-      {/* <h6>S No: {todo.sno}</h6> */}
-      <h5>Title: {todo.title}</h5>
+      <h5>{todo.sno}.</h5>
+      <h5>{todo.title}</h5>
       <p>Description: {todo.desc}</p>
       <button className="btn btn-sm btn-danger" onClick={()=>onDelete(todo)}>Delete</button>
     </div>
@@ -10,7 +10,7 @@ export default function TodoItem({ todo,onDelete }) {
 }
 
 
-// Named Export  =>this also works, use import {TofoItem} from ...
+// Named Export  =>this also works, use import {TodoItem} from ...
 
 // export const TodoItem = ({ todo }) => {
 //   return (

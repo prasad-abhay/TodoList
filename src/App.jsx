@@ -1,3 +1,72 @@
+// import React, { useState, useEffect } from "react";
+// import { HashRouter as Router, Routes, Route } from "react-router-dom";
+// import "./App.css";
+// import Navbar from "./comp/Navbar";
+// import Footer from "./comp/Footer";
+// import Todos from "./comp/Todos";
+// import AddTodo from "./comp/AddTodo";
+// import About from "./comp/About";
+
+// function App() {
+//   let initTodo;
+//   if (localStorage.getItem("todos") === null) {
+//     initTodo = [];
+//   } else {
+//     initTodo = JSON.parse(localStorage.getItem("todos"));
+//   }
+//   const onDelete = (todo) => {
+//     setTodos(
+//       todos.filter((e) => {
+//         return e !== todo;
+//       })
+//     );
+//   };
+
+//   const addTodo = (title, desc) => {
+//     let sno;
+//     if (todos.length === 0) {
+//       sno = 1;
+//     } else {
+//       sno = todos[todos.length - 1].sno + 1;
+//     }
+
+//     const myTodo = {
+//       sno: sno,
+//       title: title,
+//       desc: desc,
+//     };
+//     setTodos([...todos, myTodo]);
+//   };
+
+//   // save todos in local storage
+//   const [todos, setTodos] = useState(initTodo);
+//   useEffect(() => {
+//     localStorage.setItem("todos", JSON.stringify(todos));
+//   }, [todos]);
+//   return (
+//     <>
+//       <Router>
+//         <Navbar title="Todo List" />
+//         <Routes>
+//           <Route path="/about" element={<About />} />
+//           <Route
+//             path="/"
+//             element={
+//               <>
+//                 <AddTodo addTodo={addTodo} />
+//                 <Todos todos={todos} onDelete={onDelete} />
+//               </>
+//             }
+//           />
+//         </Routes>
+//         <Footer />
+//       </Router>
+//     </>
+//   );
+// }
+
+// export default App;
+
 import React, { useState, useEffect } from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
@@ -6,29 +75,23 @@ import Footer from "./comp/Footer";
 import Todos from "./comp/Todos";
 import AddTodo from "./comp/AddTodo";
 import About from "./comp/About";
+
 function App() {
-  let initTodo;
-  if (localStorage.getItem("todos") === null) {
-    initTodo = [];
-  } else {
-    initTodo = JSON.parse(localStorage.getItem("todos"));
-  }
+  const initTodo = JSON.parse(localStorage.getItem("todos")) || [];
+
+  const [todos, setTodos] = useState(initTodo);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   const onDelete = (todo) => {
-    setTodos(
-      todos.filter((e) => {
-        return e !== todo;
-      })
-    );
+    setTodos(todos.filter((e) => e !== todo));
   };
 
   const addTodo = (title, desc) => {
-    let sno;
-    if (todos.length === 0) {
-      sno = 1;
-    } else {
-      sno = todos[todos.length - 1].sno + 1;
-    }
-
+    const sno = todos.length > 0 ? todos[todos.length - 1].sno + 1 : 1;
     const myTodo = {
       sno: sno,
       title: title,
@@ -37,15 +100,16 @@ function App() {
     setTodos([...todos, myTodo]);
   };
 
-  // save todos in local storage
-  const [todos, setTodos] = useState(initTodo);
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
+  // Filter todos using search query
+  const filteredTodos = todos.filter((todo) =>
+    todo.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    todo.desc.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <>
       <Router>
-        <Navbar title="Todo List" />
+        <Navbar title="Todo List" setSearchQuery={setSearchQuery} />
         <Routes>
           <Route path="/about" element={<About />} />
           <Route
@@ -53,7 +117,7 @@ function App() {
             element={
               <>
                 <AddTodo addTodo={addTodo} />
-                <Todos todos={todos} onDelete={onDelete} />
+                <Todos todos={filteredTodos} onDelete={onDelete} />
               </>
             }
           />
@@ -65,3 +129,4 @@ function App() {
 }
 
 export default App;
+
