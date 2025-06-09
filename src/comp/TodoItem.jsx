@@ -8,16 +8,3 @@ export default function TodoItem({ todo,onDelete }) {
     </div>
   );
 }
-
-
-// Named Export  =>this also works, use import {TodoItem} from ...
-
-// export const TodoItem = ({ todo }) => {
-//   return (
-//     <div>
-//       <h4>serial no: {todo.sno}</h4>
-//       <p>Title: {todo.title}</p>
-//       <button className="btn btn-sm btn-danger">Delete</button>
-//     </div>
-//   );
-// };

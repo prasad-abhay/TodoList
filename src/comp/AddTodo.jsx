@@ -7,7 +7,7 @@ export default function AddTodo({ addTodo }) {
   const submit = (e) => {
     e.preventDefault();
     if (!title || !desc) {
-      alert(" Title or desciption cannot be blank");
+      alert(" Title or Desciption cannot be blank !");
     } else {
       addTodo(title, desc);
       setTitle("");
@@ -21,7 +21,7 @@ export default function AddTodo({ addTodo }) {
         <div>
            <form onSubmit= {submit}className="todo-form">
 
-           <input type="text" name="title"  value={title}
+           <input type="text" className="form-control" name="title"  value={title}
             onChange={(e) => setTitle(e.target.value)}
             id="title"
             placeholder="Add Title" />
