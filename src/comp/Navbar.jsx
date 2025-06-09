@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
-import icon from "./icon.jpg";
-
 export default function Navbar() {
 
   return (
     <>
-    <div className="navdiv">
       <nav className="navbar navbar-expand-lg ">
         <div className="container-fluid">
             <img className="icon-img"
@@ -39,7 +36,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-      </div>
     </>
   );
 }
