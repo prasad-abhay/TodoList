@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import icon from "./icon.jpg";
+
 export default function Navbar() {
 
   return (
