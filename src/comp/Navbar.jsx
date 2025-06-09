@@ -9,7 +9,7 @@ export default function Navbar() {
       <nav className="navbar navbar-expand-lg ">
         <div className="container-fluid">
             <img className="icon-img"
-              src="./icon.jpg"
+              src={icon}
               alt="icon"
             />
           <button
