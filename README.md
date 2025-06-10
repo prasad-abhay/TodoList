@@ -1,10 +1,10 @@
-![image]([https://github.com/user-attachments/assets/e5a39be6-80f8-4432-a3da-533ce3fc504c](https://github.com/user-attachments/assets/ce37fa59-f846-4d0c-bba0-9411ef1c1c18))# 📝 Todo List React App
+![image]((https://github.com/user-attachments/assets/ce37fa59-f846-4d0c-bba0-9411ef1c1c18))# 📝 Todo List React App
 
 A simple and interactive Todo List application built with **React**. It allows users to add, delete, and search todos. Todos are stored in the browser's **localStorage**, so your list is preserved even after refresh!
 
 ## see live deployed page
 
-[Live Demo]((https://prasad-abhay.github.io/TodoList-React-App/#/))
+[Live Demo](https://prasad-abhay.github.io/TodoList-React-App/#/)
 
 ## 🚀 Features
 
