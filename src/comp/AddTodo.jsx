@@ -2,16 +2,14 @@ import React, { useState } from "react";
 
 export default function AddTodo({ addTodo }) {
   const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
 
   const submit = (e) => {
     e.preventDefault();
-    if (!title || !desc) {
-      alert(" Title or Desciption cannot be blank !");
+    if (!title) {
+      alert(" Title cannot be blank !");
     } else {
-      addTodo(title, desc);
+      addTodo(title);
       setTitle("");
-      setDesc("");
     }
   };
 
@@ -24,16 +22,9 @@ export default function AddTodo({ addTodo }) {
            <input type="text" className="form-control" name="title"  value={title}
             onChange={(e) => setTitle(e.target.value)}
             id="title"
-            placeholder="Add Title" />
+            placeholder="Add your Todo..." />
 
-           <input type="text"
-            className="form-control"
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-            id="desc"
-            placeholder="Add Description" />
-
-           <button type="submit" className="btn btn-primary">Add Todo</button>
+           <button type="submit" className="btn btn-primary">Add</button>
            </form>
         </div>
     </div>

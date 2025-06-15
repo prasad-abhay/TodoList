@@ -20,19 +20,17 @@ function App() {
     setTodos(todos.filter((e) => e !== todo));
   };
 
-  const addTodo = (title, desc) => {
+  const addTodo = (title) => {
     const sno = todos.length > 0 ? todos[todos.length - 1].sno + 1 : 1;
     const myTodo = {
       sno: sno,
       title: title,
-      desc: desc,
     };
     setTodos([...todos, myTodo]);
   };
 
   const filteredTodos = todos.filter((todo) =>
-    todo.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    todo.desc.toLowerCase().includes(searchQuery.toLowerCase())
+    todo.title.toLowerCase().includes(searchQuery.toLowerCase()) 
   );
 
   return (
