@@ -1,4 +1,5 @@
 export default function TodoItem({ todo,onDelete }) {
+  
   return (
     <div className="todoitem">
       <h4>{todo.sno}.</h4>

@@ -5,14 +5,19 @@ export default function Todos(props) {
     <div className="todo">
       <h3>My Todo Items</h3>
       {
-      props.todos.length===0? "No Todos to display" :
-      props.todos.map((todo) => {
-        return (<>
-        <hr />
-        <TodoItem todo={todo} key={todo.sno} onDelete = {props.onDelete}></TodoItem>
-        </>
-        )
-      })}
+        props.todos.length === 0 ? "No Todos to display!" :
+        props.todos.map((todo, index) => {
+          return (
+            <div key={todo.id}>
+              <hr />
+              <TodoItem
+                todo={{ ...todo, sno: index + 1 }}
+                onDelete={props.onDelete}
+              />
+            </div>
+          );
+        })
+      }
     </div>
   );
 }

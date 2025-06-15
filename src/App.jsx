@@ -17,13 +17,12 @@ function App() {
   }, [todos]);
 
   const onDelete = (todo) => {
-    setTodos(todos.filter((e) => e !== todo));
+    setTodos(todos.filter((e) => e.id !== todo.id));
   };
 
   const addTodo = (title) => {
-    const sno = todos.length > 0 ? todos[todos.length - 1].sno + 1 : 1;
     const myTodo = {
-      sno: sno,
+       id: Date.now(),
       title: title,
     };
     setTodos([...todos, myTodo]);
